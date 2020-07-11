@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define Maxsize 20
+#define Fail 0
+#define OK 1
+
+
+
+typedef struct{
+	int *elem;
+	int length;
+}SqList;
+
+int InitList(SqList *L)
+{
+	L = (SqList*)malloc(sizeof(SqList)*Maxsize);
+	if ( !L )
+	{
+		return Fail;
+	}
+	L->length = 0;
+	return OK;
+}
+
+int main()
+{
+	SqList *L;
+	InitList(L);
+	
+	return 0;
+}
+
