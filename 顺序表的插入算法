@@ -1,0 +1,41 @@
+#include <stdio.h>
+#define Maxsize 10
+#define ERROR 0
+#define OK 1
+
+typedef struct{
+	int elem[Maxsize];
+	int length;
+}SqList;
+
+int ListInsert(SqList *L, int i, int e);
+
+int main()
+{
+	SqList *L;
+	int e;
+	int i;
+
+	scanf("%d", &i);
+	scanf("%d", &e);
+	ListInsert(L, i, e);
+	
+	return 0;
+} 
+
+int ListInsert(SqList *L, int i, int e)
+{
+	int j;
+	if ( i<1 || i>L->length+1) {
+		return ERROR;					//i值不合法 
+	}
+	if (L->length == Maxsize) {			//当前存储空间已满 
+		return ERROR;
+	}
+	for ( j=length-1; j>=i-1; j--) {
+		L->elem[j+1] = L->elem[j];		//插入的位置及之后的元素后移 
+	}
+	L->length++;						//线性表的长度加一 
+	L->elem[i-1] = e;					//将元素e放在第i个位置 
+	return OK;
+}
