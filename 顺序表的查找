@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+
+typedef struct{
+	int elem[10];
+	int length;
+}SqList;
+
+int LocateElem(SqList L, int e);
+
+int main()
+{
+	SqList L;
+	int i;
+	L.elem;
+	L.length;
+	for ( i=0; i<10; i++ ) {
+		L.elem[i] = i+1;
+		L.length = i+1;
+	}
+	int e;
+	scanf("%d", &e);
+	LocateElem(L, e);
+	printf("%d\n", LocateElem(L, e));
+	
+	return 0;
+}
+
+int LocateElem(SqList L, int e)
+{
+	int i;
+	for ( i=0; i<L.length; i++) {
+		if (e == L.elem[i]) {
+			return i+1;
+		}
+	} 
+	return 0;
+}
