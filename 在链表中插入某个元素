@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define OK 1
+#define ERROR 0
+typedef struct Lianbiao {
+	int data;
+	struct Lianbiao *next;
+}Lnode, LinkList;
+
+int ListInsert_L(LinkList *L, int i, int e)
+{
+	Lnode *p, *s;
+	p = L;
+	int j = 0;
+	p = (Lnode*)malloc(sizeof(Lnode));
+	while(p&&j<i-1) {
+		p = p->next;
+		++j;
+	}
+	if ( !p||j>i-1 ) {
+		return ERROR;
+	}
+	s = (Lnode*)malloc(sizeof(Lnode));
+	s->data = e;
+	s->next = p->next;
+	p->next = s;
+	return OK;
+}
