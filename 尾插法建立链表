@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Lian{
+	int data;
+	struct Lian *next;
+}Lnode, LinkList;
+
+void CreatList_H(LinkList *L, int n)
+{
+	Lnode *p, *q;
+	int i;
+	L = (LinkList*)malloc(sizeof(LinkList));
+	q = (LinkList*)malloc(sizeof(LinkList));
+	p = L->next;
+	L->next = NULL;		//先建立一个带头节点的单链表
+	for ( i=n; i>0; --i) {
+		p = (Lnode*)malloc(sizeof(Lnode));		//生成新的节点p
+		scanf("%d", &p->data);
+		p->next = L->next;		//插入到表头 
+		L->next = p; 
+	}	
+	p = L->next;
+	while (p) {
+		q = p->next;
+		printf("链表的值为%d\n", p->data);
+		p = q;
+	}
+} 
+
+int main(void)
+{
+	LinkList *L;
+	CreatList_H(L, 10);
+	return 0;
+}
